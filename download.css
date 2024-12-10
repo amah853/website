@@ -1,0 +1,55 @@
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background: #121212;
+  color: #e0e0e0;
+  text-align: center;
+}
+
+/* Downloads Section */
+.downloads {
+  padding: 100px 20px;
+}
+
+.downloads h2 {
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  background: linear-gradient(90deg, #42a5f5, #e91e63); /* Gradient for titles */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.downloads input {
+  padding: 10px;
+  font-size: 1em;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 5px;
+  width: 300px;
+  max-width: 100%;
+  background: #1a1a1a;
+  color: #fff;
+  border: 1px solid #333;
+}
+
+.downloads input::placeholder {
+  color: #bdbdbd;
+}
+
+.downloads button {
+  padding: 10px 20px;
+  font-size: 1.1em;
+  background: #ffeb3b;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.downloads button:hover {
+  background: #fbc02d;
+}
