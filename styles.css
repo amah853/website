@@ -74,7 +74,7 @@ section {
 .about h2 {
   font-size: 2.5em;
   margin-bottom: 20px;
-  background: linear-gradient(90deg, #42a5f5, #fbc02d, #ff4081); /* Static gradient for titles */
+  background: linear-gradient(90deg, #42a5f5, #e91e63); /* Stronger static gradient with blue and pink */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -93,7 +93,7 @@ section {
 .projects h2 {
   font-size: 2.5em;
   margin-bottom: 20px;
-  background: linear-gradient(90deg, #42a5f5, #fbc02d, #ff4081); /* Static gradient for titles */
+  background: linear-gradient(90deg, #42a5f5, #e91e63); /* Stronger static gradient with blue and pink */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -110,7 +110,15 @@ section {
 
 .project:hover {
   transform: translateY(-10px);
-  box-shadow: 0 4px 15px rgba(66, 165, 245, 0.7), 0 0 20px rgba(251, 192, 45, 0.5), 0 0 25px rgba(255, 64, 129, 0.5); /* Gradient glow on hover */
+  box-shadow: 0 4px 15px rgba(66, 165, 245, 0.7), 0 0 20px rgba(233, 30, 99, 0.5), 0 0 25px rgba(255, 64, 129, 0.5); /* Gradient glow on hover */
+  animation: glowMove 3s infinite;
+}
+
+/* Glow Moving Animation */
+@keyframes glowMove {
+  0% { box-shadow: 0 4px 15px rgba(66, 165, 245, 0.7), 0 0 20px rgba(233, 30, 99, 0.5), 0 0 25px rgba(255, 64, 129, 0.5); }
+  50% { box-shadow: 0 4px 15px rgba(233, 30, 99, 0.7), 0 0 20px rgba(66, 165, 245, 0.5), 0 0 25px rgba(255, 64, 129, 0.5); }
+  100% { box-shadow: 0 4px 15px rgba(255, 64, 129, 0.7), 0 0 20px rgba(66, 165, 245, 0.5), 0 0 25px rgba(233, 30, 99, 0.5); }
 }
 
 .project h3 {
