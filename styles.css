@@ -72,9 +72,8 @@ section {
 }
 
 .about h2 {
-  font-size: 2em;
+  font-size: 2.5em;
   margin-bottom: 20px;
-  color: #fbc02d;
 }
 
 .about p {
@@ -85,13 +84,12 @@ section {
 /* Projects Section */
 .projects {
   background: #000;
+  text-align: center;
 }
 
 .projects h2 {
-  font-size: 2em;
-  text-align: center;
+  font-size: 2.5em;
   margin-bottom: 20px;
-  color: #42a5f5;
 }
 
 .project {
@@ -101,6 +99,12 @@ section {
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   max-width: 600px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 15px rgba(255, 235, 59, 0.5); /* Glowing effect */
 }
 
 .project h3 {
@@ -111,6 +115,15 @@ section {
 .project p {
   font-size: 1em;
   color: #bdbdbd;
+}
+
+/* Gradient for Titles */
+.gradient-text {
+  background: linear-gradient(90deg, #42a5f5, #fbc02d, #ff4081, #42a5f5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 300% 300%;
+  animation: gradientMove 3s infinite;
 }
 
 /* Footer */
