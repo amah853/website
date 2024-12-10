@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>[Your Name] | Coding & Robotics</title>
+  <title>[Your Name] | Dark Mode Portfolio</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/scrollreveal"></script>
 </head>
 <body>
   <!-- Header Section -->
@@ -12,7 +13,7 @@
     <div class="container">
       <h1>Hi, I'm <span class="highlight gradient-text">[Your Name]</span></h1>
       <p>I like coding, robotics, and helping with stage crew.</p>
-      <a href="#about" class="btn">Get to Know Me</a>
+      <a href="#about" class="btn">Learn More</a>
     </div>
   </header>
 
@@ -21,9 +22,8 @@
     <div class="container">
       <h2>About Me</h2>
       <p>
-        I'm a 13-year-old who enjoys coding projects, tinkering with robotics, and being part of the stage crew. 
-        I like solving problems and learning new things, whether it’s through building small robots, writing code, 
-        or making stage productions run smoothly.
+        I'm a 13-year-old who enjoys coding, robotics, and being part of the stage crew. 
+        I love learning and exploring new projects in my free time.
       </p>
     </div>
   </section>
@@ -54,15 +54,33 @@
     </div>
   </footer>
 
-  <!-- Smooth Scrolling Script -->
+  <!-- Smooth Scrolling Animation -->
   <script>
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
+    ScrollReveal().reveal('.hero', {
+      duration: 2000,
+      origin: 'bottom',
+      distance: '50px'
+    });
+
+    ScrollReveal().reveal('.about', {
+      duration: 2000,
+      origin: 'left',
+      distance: '100px',
+      delay: 300
+    });
+
+    ScrollReveal().reveal('.projects', {
+      duration: 2000,
+      origin: 'right',
+      distance: '100px',
+      delay: 600
+    });
+
+    ScrollReveal().reveal('footer', {
+      duration: 2000,
+      origin: 'top',
+      distance: '50px',
+      delay: 900
     });
   </script>
 </body>
