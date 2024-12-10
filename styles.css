@@ -141,3 +141,53 @@ footer {
   border-top: 1px solid #333;
   margin-top: 50px; /* Footer appears closer */
 }
+/* 404 Page Styles */
+.error-page {
+  background: #121212;
+  color: #fff;
+  text-align: center;
+  padding: 100px 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-title {
+  font-size: 5em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #f44336, #ffeb3b); /* Red to Yellow gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 300% 300%;
+  animation: gradientMove 3s infinite;
+}
+
+.error-message {
+  font-size: 1.5em;
+  margin-bottom: 40px;
+  color: #bdbdbd;
+}
+
+.error-btn {
+  display: inline-block;
+  background: #f44336;
+  color: #fff;
+  padding: 15px 30px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.error-btn:hover {
+  background: #ffeb3b;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
