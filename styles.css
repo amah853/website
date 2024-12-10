@@ -74,6 +74,9 @@ section {
 .about h2 {
   font-size: 2.5em;
   margin-bottom: 20px;
+  background: linear-gradient(90deg, #42a5f5, #fbc02d, #ff4081); /* Static gradient for titles */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .about p {
@@ -90,6 +93,9 @@ section {
 .projects h2 {
   font-size: 2.5em;
   margin-bottom: 20px;
+  background: linear-gradient(90deg, #42a5f5, #fbc02d, #ff4081); /* Static gradient for titles */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .project {
@@ -104,7 +110,7 @@ section {
 
 .project:hover {
   transform: translateY(-10px);
-  box-shadow: 0 4px 15px rgba(255, 235, 59, 0.5); /* Glowing effect */
+  box-shadow: 0 4px 15px rgba(66, 165, 245, 0.7), 0 0 20px rgba(251, 192, 45, 0.5), 0 0 25px rgba(255, 64, 129, 0.5); /* Gradient glow on hover */
 }
 
 .project h3 {
@@ -117,21 +123,13 @@ section {
   color: #bdbdbd;
 }
 
-/* Gradient for Titles */
-.gradient-text {
-  background: linear-gradient(90deg, #42a5f5, #fbc02d, #ff4081, #42a5f5);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 300% 300%;
-  animation: gradientMove 3s infinite;
-}
-
 /* Footer */
 footer {
   text-align: center;
-  padding: 20px;
+  padding: 40px;
   background: #121212;
   color: #bdbdbd;
   font-size: 0.9em;
   border-top: 1px solid #333;
+  margin-top: 50px; /* Footer appears closer */
 }
