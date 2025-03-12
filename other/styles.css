@@ -1,0 +1,193 @@
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background: #121212;
+  color: #e0e0e0;
+  overflow-x: hidden;
+}
+
+/* Global Section Style */
+section {
+  padding: 60px 20px;
+}
+
+/* Header */
+.hero {
+  background: linear-gradient(to bottom right, #000000, #1a1a1a);
+  color: #fff;
+  padding: 100px 20px;
+  text-align: center;
+  position: relative;
+}
+
+.hero h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+
+.hero .highlight {
+  font-size: 1.2em;
+}
+
+.hero .gradient-text {
+  background: linear-gradient(90deg, #42a5f5, #fbc02d, #ff4081, #42a5f5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 300% 300%;
+  animation: gradientMove 3s infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.hero .btn {
+  display: inline-block;
+  background: #ffeb3b;
+  color: #000;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.hero .btn:hover {
+  background: #fbc02d;
+}
+
+/* About Section */
+.about {
+  background: #1a1a1a;
+  text-align: center;
+}
+
+.about h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #42a5f5, #e91e63); /* Stronger static gradient with blue and pink */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.about p {
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+/* Projects Section */
+.projects {
+  background: #000;
+  text-align: center;
+}
+
+.projects h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #42a5f5, #e91e63); /* Stronger static gradient with blue and pink */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.project {
+  margin: 20px auto;
+  padding: 20px;
+  background: #1a1a1a;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  max-width: 600px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 15px rgba(66, 165, 245, 0.7), 0 0 20px rgba(233, 30, 99, 0.5), 0 0 25px rgba(255, 64, 129, 0.5); /* Gradient glow on hover */
+  animation: glowMove 3s infinite;
+}
+
+/* Glow Moving Animation */
+@keyframes glowMove {
+  0% { box-shadow: 0 4px 15px rgba(66, 165, 245, 0.7), 0 0 20px rgba(233, 30, 99, 0.5), 0 0 25px rgba(255, 64, 129, 0.5); }
+  50% { box-shadow: 0 4px 15px rgba(233, 30, 99, 0.7), 0 0 20px rgba(66, 165, 245, 0.5), 0 0 25px rgba(255, 64, 129, 0.5); }
+  100% { box-shadow: 0 4px 15px rgba(255, 64, 129, 0.7), 0 0 20px rgba(66, 165, 245, 0.5), 0 0 25px rgba(233, 30, 99, 0.5); }
+}
+
+.project h3 {
+  color: #ffeb3b;
+  margin-bottom: 10px;
+}
+
+.project p {
+  font-size: 1em;
+  color: #bdbdbd;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 40px;
+  background: #121212;
+  color: #bdbdbd;
+  font-size: 0.9em;
+  border-top: 1px solid #333;
+  margin-top: 50px; /* Footer appears closer */
+}
+/* 404 Page Styles */
+.error-page {
+  background: #121212;
+  color: #fff;
+  text-align: center;
+  padding: 100px 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-title {
+  font-size: 5em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #f44336, #ffeb3b); /* Red to Yellow gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 300% 300%;
+  animation: gradientMove 3s infinite;
+}
+
+.error-message {
+  font-size: 1.5em;
+  margin-bottom: 40px;
+  color: #bdbdbd;
+}
+
+.error-btn {
+  display: inline-block;
+  background: #f44336;
+  color: #fff;
+  padding: 15px 30px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.error-btn:hover {
+  background: #ffeb3b;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
