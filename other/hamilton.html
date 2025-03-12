@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hamilton Status Selector</title>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    function showQuote() {
+      const quotes = [
+        "Talk less, smile more.",
+        "I am not throwing away my shot!",
+        "There's a million things I haven't done, but just you wait!",
+        "History has its eyes on you.",
+        "Why do you write like you're running out of time?"
+      ];
+      alert(quotes[Math.floor(Math.random() * quotes.length)]);
+    }
+
+    function cabinetBattle() {
+      const arguments = [
+        "You don’t have the votes!",
+        "What’d I miss?",
+        "Life, liberty, and the pursuit of happiness... We fought for these ideals; we shouldn't settle for less!"
+      ];
+      alert(arguments[Math.floor(Math.random() * arguments.length)]);
+    }
+
+    function burnBook() {
+      document.getElementById("burn-text").style.display = "none";
+      alert("🔥 Your letter has been burned by Eliza! 🔥");
+    }
+
+    function enterTheRoom() {
+      window.location.href = "https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/22312759/rickroll_4k.jpg?quality=90&strip=all&crop=0,10.749448450723,100,78.501103098554";
+    }
+
+    function youllBeBack() {
+      const breakupMessages = [
+        "You’ll be back, soon you’ll see...",
+        "You’ll remember you belong to me...",
+        "And when push comes to shove, I will send a fully armed battalion to remind you of my love!"
+      ];
+      alert(breakupMessages[Math.floor(Math.random() * breakupMessages.length)]);
+    }
+
+    function duelCountdown() {
+      let count = 10;
+      const countdown = setInterval(() => {
+        if (count === 0) {
+          clearInterval(countdown);
+          alert("🔫 The duel is over! Hope you survived...");
+        } else {
+          alert(`${count} Duel commandments...`);
+          count--;
+        }
+      }, 1000);
+    }
+  </script>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <h1 class="gradient-text">What’s Your Status?</h1>
+      <p>Choose wisely. History has its eyes on you.</p>
+    </div>
+  </header>
+
+  <section class="status-section">
+    <div class="container">
+      <h2>Select Your Status:</h2>
+      <form>
+        <label><input type="checkbox" name="status" value="single"> Single</label><br>
+        <label><input type="checkbox" name="status" value="taken"> Taken</label><br>
+        <label><input type="checkbox" name="status" value="inimitable"> I am an inimitable</label><br>
+        <label><input type="checkbox" name="status" value="original"> I am an original</label><br>
+        <label><input type="checkbox" name="status" value="young-scrappy"> I am young, scrappy, and hungry</label><br>
+        <label><input type="checkbox" name="status" value="waiting"> I am not throwing away my shot</label><br>
+        <label><input type="checkbox" name="status" value="helpless"> I am helpless</label><br>
+        <label><input type="checkbox" name="status" value="work"> I have been working non-stop</label><br>
+        <label><input type="checkbox" name="status" value="outgunned"> I am outgunned, outmanned, outnumbered, outplanned</label><br>
+        
+        <h3>Who Would You Duel?</h3>
+        <select name="duel">
+          <option value="burr">Aaron Burr</option>
+          <option value="jefferson">Thomas Jefferson</option>
+          <option value="madison">James Madison</option>
+          <option value="king_george">King George III</option>
+        </select><br><br>
+        
+        <h3>Write Like You’re Running Out of Time:</h3>
+        <textarea id="burn-text" placeholder="Write your legacy..."></textarea>
+        <button type="button" class="btn" onclick="burnBook()">Send to Eliza</button><br>
+        
+        <button type="button" class="btn" onclick="showQuote()">Surprise Me</button>
+        <button type="button" class="btn" onclick="cabinetBattle()">Cabinet Battle</button>
+        <button type="button" class="btn" onclick="enterTheRoom()">Enter The Room Where It Happens</button>
+        <button type="button" class="btn" onclick="youllBeBack()">You’ll Be Back</button>
+        <button type="button" class="btn" onclick="duelCountdown()">10 Duel Commandments</button>
+        <button type="submit" class="btn">Submit</button>
+      </form>
+    </div>
+  </section>
+
+  <footer id="footer">
+    <div class="container">
+      <p>&copy; 2025 Ahmad Mahrous | Made with 💻 and 🎭</p>
+    </div>
+  </footer>
+</body>
+</html>
