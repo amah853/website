@@ -39,6 +39,32 @@
 
     let duelIndex = 0;
 
+function generateCharacterProfile() {
+  const traits = document.querySelectorAll('input[name="trait"]:checked');
+  let profile = '';
+  const characterProfiles = {
+    "Hamilton": "You are determined, ambitious, and ready to change the world. You fight for your beliefs and won't stop until you've achieved your goals. You could definitely be the next Secretary of the Treasury!",
+    "Burr": "You are cautious and strategic, always weighing the pros and cons before taking action. You're not one for taking risks, and you always consider the consequences before making a move.",
+    "Angelica": "You are intelligent, witty, and fiercely loyal to those you care about. You're known for your sharp mind and your ability to take control of any situation. You’re an advocate for women’s rights and equality.",
+    "Eliza": "You are loving, compassionate, and deeply supportive of your loved ones. You're dedicated to your family and believe in the power of perseverance and resilience, even in the face of hardship.",
+    "King George": "You are eccentric and somewhat delusional, with a tendency to focus on controlling the people around you. Despite your grand gestures, you hide your insecurity under a veil of sarcasm and wit."
+  };
+
+  // Logic to determine the character based on traits
+  if (traits.length > 3) {
+    profile = characterProfiles["Hamilton"];
+  } else if (traits.length > 2) {
+    profile = characterProfiles["Angelica"];
+  } else if (traits.length === 2) {
+    profile = characterProfiles["Burr"];
+  } else {
+    profile = characterProfiles["Eliza"];
+  }
+
+  document.getElementById('character-profile').textContent = profile;
+}
+
+    
     function showQuote() {
       alert(hamiltonQuotes[Math.floor(Math.random() * hamiltonQuotes.length)]);
     }
@@ -114,6 +140,27 @@
         <textarea id="burn-text" placeholder="Write your legacy..."></textarea>
         <button type="button" class="btn" onclick="burnBook()">Send to Eliza</button>
         <hr style="width: 100%; border-color: #fff;">
+
+<section class="character-profile-section" style="text-align: left;">
+  <div class="container">
+    <h2>Create Your Hamilton Character Profile:</h2>
+    <p>Select your traits and see which *Hamilton* character you are most like!</p>
+    <form id="character-form">
+      <label><input type="checkbox" name="trait" value="ambitious"> Ambitious</label><br>
+      <label><input type="checkbox" name="trait" value="loyal"> Loyal</label><br>
+      <label><input type="checkbox" name="trait" value="strategic"> Strategic</label><br>
+      <label><input type="checkbox" name="trait" value="brave"> Brave</label><br>
+      <label><input type="checkbox" name="trait" value="intelligent"> Intelligent</label><br>
+      <label><input type="checkbox" name="trait" value="sarcastic"> Sarcastic</label><br>
+      <label><input type="checkbox" name="trait" value="romantic"> Romantic</label><br>
+      <button type="button" class="btn" onclick="generateCharacterProfile()">Generate My Character Profile</button>
+    </form>
+    <hr style="width: 100%; border-color: #fff;">
+    <h3>Your Character Profile:</h3>
+    <div id="character-profile" style="color: #ffcc00; font-size: 1.2em;"></div>
+  </div>
+</section>
+
         
         <!-- Random Quotes and Actions -->
         <button type="button" class="btn" onclick="showQuote()">Click for a Random Hamilton Quote!</button>
