@@ -6,102 +6,34 @@
   <title>Hamilton Stuff :)</title>
   <link rel="stylesheet" href="styles.css">
   <script>
-    // Function to reset all form elements
-    function restartPage() {
-      document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => checkbox.checked = false);
-      document.getElementById('burn-text').value = '';
-      document.getElementById('burn-text').style.display = 'block';
-      alert("🔄 The page has been reset! Choose wisely again, History has its eyes on you.");
-    }
-
-    let shownQuotes = [];
-    let shownArguments = [];
-    let shownCommandments = [];
-
-    // Function to show a random quote
-    function showQuote() {
-      const quotes = [
-        "Talk less, smile more.",
-        "I am not throwing away my shot!",
-        "There's a million things I haven't done, but just you wait!",
-        "History has its eyes on you.",
-        "Why do you write like you're running out of time?"
+    // Duel Simulator
+    function duelSimulator() {
+      const steps = [
+        "Take ten paces forward.",
+        "Turn around and face your opponent.",
+        "Draw your pistols.",
+        "Take a deep breath and prepare to fire.",
+        "Fire!"
       ];
-      if (shownQuotes.length === quotes.length) {
-        shownQuotes = [];
-      }
-      let randomQuote;
-      do {
-        randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-      } while (shownQuotes.includes(randomQuote));
-      shownQuotes.push(randomQuote);
-      alert(randomQuote);
-    }
-
-    // Function for cabinet battle
-    function cabinetBattle() {
-      const arguments = [
-        "You don’t have the votes!",
-        "What’d I miss?",
-        "Life, liberty, and the pursuit of happiness... We fought for these ideals; we shouldn't settle for less!"
+      let duelOutcome = [
+        "You survived the duel!",
+        "You did not survive the duel..."
       ];
-      if (shownArguments.length === arguments.length) {
-        shownArguments = [];
-      }
-      let randomArgument;
-      do {
-        randomArgument = arguments[Math.floor(Math.random() * arguments.length)];
-      } while (shownArguments.includes(randomArgument));
-      shownArguments.push(randomArgument);
-      alert(randomArgument);
+      let randomOutcome = duelOutcome[Math.floor(Math.random() * duelOutcome.length)];
+
+      alert("Duel Simulation: \n" + steps.join("\n") + "\n\n" + randomOutcome);
     }
 
-    // Function to burn the text
-    function burnBook() {
-      document.getElementById("burn-text").style.display = "none";
-      alert("🔥 Your letter has been burned by Eliza! 🔥");
-    }
-
-    // Function to enter the room
-    function enterTheRoom() {
-      window.location.href = "https://en.wikipedia.org/wiki/The_Room_Where_It_Happens";
-    }
-
-    // Function for King George's breakup message
-    function youllBeBack() {
-      const breakupMessages = [
-        "You’ll be back, soon you’ll see...",
-        "You’ll remember you belong to me...",
-        "And when push comes to shove, I will send a fully armed battalion to remind you of my love!"
+    // My Shot at a Quote
+    function shotAtQuote() {
+      const userQuote = document.getElementById("user-quote").value;
+      const feedback = [
+        "Hamilton says: 'That's the spirit! Your words will echo through history!'",
+        "Burr says: 'Careful... don't get too cocky. Words can be a weapon.'",
+        "Eliza says: 'So powerful! Make sure your actions match your words.'"
       ];
-      alert(breakupMessages[Math.floor(Math.random() * breakupMessages.length)]);
-    }
-
-    // Function for duel commandment
-    function duelCommandment() {
-      const commandments = [
-        "1. The challenge: Demand satisfaction. If they apologize, no need for further action...",
-        "2. If they don’t, grab a friend, that’s your second...",
-        "3. Have your seconds meet face to face...",
-        "4. Time, place, specific location...",
-        "5. Most disputes die and no one shoots...",
-        "6. If they don’t reach peace, that’s alright. Time to get some pistols and a doctor on site...",
-        "7. Leave a note for your next of kin, tell 'em where you’ve been...",
-        "8. Your last chance to negotiate, send in your seconds, see if they can set the record straight...",
-        "9. Look him in the eye, aim no higher. Summon all the courage you require, then count...",
-        "10. Ten paces! Fire!",
-        "11. If you survive, you tell the story. If you don’t... well..."
-      ];
-      if (shownCommandments.length === commandments.length) {
-        shownCommandments = [];
-      }
-      let randomCommandment;
-      do {
-        randomCommandment = commandments[Math.floor(Math.random() * commandments.length)];
-      } while (shownCommandments.includes(randomCommandment));
-      shownCommandments.push(randomCommandment);
-      const survived = Math.random() > 0.5 ? "You survived the duel!" : "You did not survive the duel...";
-      alert(randomCommandment + '\n' + survived);
+      alert(feedback[Math.floor(Math.random() * feedback.length)] + "\n\nYour Quote: " + userQuote);
+      document.getElementById("user-quote").value = ""; // Clear input field
     }
   </script>
 </head>
@@ -117,7 +49,6 @@
     <div class="container">
       <h2>You are...</h2>
       <form>
-        <!-- Checkboxes -->
         <label><input type="checkbox" name="status" value="inimitable"> I am an inimitable</label><br>
         <label><input type="checkbox" name="status" value="original"> I am an original</label><br>
         <label><input type="checkbox" name="status" value="young-scrappy"> I am young, scrappy, and hungry</label><br>
@@ -126,11 +57,11 @@
         <label><input type="checkbox" name="status" value="work"> I have been working non-stop</label><br>
         <label><input type="checkbox" name="status" value="outgunned"> I am outgunned, outmanned, outnumbered, outplanned</label><br>
         <hr style="width: 100%; border-color: #fff;">
-        <h3>Write Like You’re Running Out of Time:</h3>
-        <textarea id="burn-text" placeholder="Write your legacy..."></textarea>
-        <button type="button" class="btn" onclick="burnBook()">Send to Eliza</button>
+        <h3>Write Your Shot at a Quote:</h3>
+        <textarea id="user-quote" placeholder="Write your legacy..."></textarea>
+        <button type="button" class="btn" onclick="shotAtQuote()">Submit Your Quote</button>
         <hr style="width: 100%; border-color: #fff;">
-        <!-- Interactive Buttons -->
+        <button type="button" class="btn" onclick="duelSimulator()">Start a Duel Simulation!</button>
         <button type="button" class="btn" onclick="showQuote()">Click for a Random Hamilton Quote!</button>
         <button type="button" class="btn" onclick="cabinetBattle()">Argue Like You're in a Cabinet Battle!</button>
         <button type="button" class="btn" onclick="enterTheRoom()">Find Out What Happens in The Room Where It Happens!</button>
@@ -147,5 +78,11 @@
       <p>&copy; 2025 Ahmad Mahrous | Made with 🖥️ and 🎭</p>
     </div>
   </footer>
+
+  <script>
+    function restartPage() {
+      location.reload();
+    }
+  </script>
 </body>
 </html>
