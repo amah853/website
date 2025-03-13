@@ -6,35 +6,51 @@
   <title>Hamilton Stuff :)</title>
   <link rel="stylesheet" href="styles.css">
   <script>
-    // Duel Simulator
-    function duelSimulator() {
-      const steps = [
-        "Take ten paces forward.",
-        "Turn around and face your opponent.",
-        "Draw your pistols.",
-        "Take a deep breath and prepare to fire.",
-        "Fire!"
-      ];
-      let duelOutcome = [
-        "You survived the duel!",
-        "You did not survive the duel..."
-      ];
-      let randomOutcome = duelOutcome[Math.floor(Math.random() * duelOutcome.length)];
+    let duelSteps = [
+      { 
+        step: "Step forward 10 paces", 
+        opponentAction: "Burr steps forward 10 paces as well." 
+      },
+      { 
+        step: "Turn around and face your opponent", 
+        opponentAction: "Burr does the same, ready to face you."
+      },
+      { 
+        step: "Draw your pistols", 
+        opponentAction: "Burr draws his pistols with precision."
+      },
+      { 
+        step: "Take a deep breath and prepare to fire", 
+        opponentAction: "Burr steadies his aim, preparing for the shot."
+      },
+      { 
+        step: "Fire!", 
+        opponentAction: "Burr fires... and now it's your turn!"
+      }
+    ];
 
-      alert("Duel Simulation: \n" + steps.join("\n") + "\n\n" + randomOutcome);
+    let duelIndex = 0;
+    let duelOutcome = "The duel continues...";
+
+    function nextStep() {
+      if (duelIndex < duelSteps.length) {
+        const step = duelSteps[duelIndex];
+        document.getElementById("user-action").innerText = step.step;
+        document.getElementById("opponent-action").innerText = step.opponentAction;
+        duelIndex++;
+        if (duelIndex === duelSteps.length) {
+          setTimeout(finalOutcome, 2000);
+        }
+      }
     }
 
-    // My Shot at a Quote
-    function shotAtQuote() {
-      const userQuote = document.getElementById("user-quote").value;
-      const feedback = [
-        "Hamilton says: 'That's the spirit! Your words will echo through history!'",
-        "Burr says: 'Careful... don't get too cocky. Words can be a weapon.'",
-        "Eliza says: 'So powerful! Make sure your actions match your words.'"
-      ];
-      alert(feedback[Math.floor(Math.random() * feedback.length)] + "\n\nYour Quote: " + userQuote);
-      document.getElementById("user-quote").value = ""; // Clear input field
+    function finalOutcome() {
+      const outcome = Math.random() > 0.5 ? 
+        "You survived the duel!" : 
+        "You did not survive the duel...";
+      alert(outcome);
     }
+
   </script>
 </head>
 <body>
@@ -47,29 +63,21 @@
 
   <section class="status-section" style="text-align: left;">
     <div class="container">
-      <h2>You are...</h2>
-      <form>
-        <label><input type="checkbox" name="status" value="inimitable"> I am an inimitable</label><br>
-        <label><input type="checkbox" name="status" value="original"> I am an original</label><br>
-        <label><input type="checkbox" name="status" value="young-scrappy"> I am young, scrappy, and hungry</label><br>
-        <label><input type="checkbox" name="status" value="waiting"> I am not throwing away my shot</label><br>
-        <label><input type="checkbox" name="status" value="helpless"> I am helpless</label><br>
-        <label><input type="checkbox" name="status" value="work"> I have been working non-stop</label><br>
-        <label><input type="checkbox" name="status" value="outgunned"> I am outgunned, outmanned, outnumbered, outplanned</label><br>
-        <hr style="width: 100%; border-color: #fff;">
-        <h3>Write Your Shot at a Quote:</h3>
-        <textarea id="user-quote" placeholder="Write your legacy..."></textarea>
-        <button type="button" class="btn" onclick="shotAtQuote()">Submit Your Quote</button>
-        <hr style="width: 100%; border-color: #fff;">
-        <button type="button" class="btn" onclick="duelSimulator()">Start a Duel Simulation!</button>
-        <button type="button" class="btn" onclick="showQuote()">Click for a Random Hamilton Quote!</button>
-        <button type="button" class="btn" onclick="cabinetBattle()">Argue Like You're in a Cabinet Battle!</button>
-        <button type="button" class="btn" onclick="enterTheRoom()">Find Out What Happens in The Room Where It Happens!</button>
-        <button type="button" class="btn" onclick="youllBeBack()">Generate a King George Breakup Message!</button>
-        <button type="button" class="btn" onclick="duelCommandment()">Get a Random Duel Commandment and See If You Survive!</button>
-        <hr style="width: 100%; border-color: #fff;">
-        <button type="button" class="btn" onclick="restartPage()">Restart</button>
-      </form>
+      <h2>Choose Your Duel Steps</h2>
+      <p id="user-action">Click below to begin the duel!</p>
+      <p id="opponent-action"></p>
+
+      <button type="button" class="btn" onclick="nextStep()">Start the Duel</button>
+      <button type="button" class="btn" onclick="restartDuel()">Restart Duel</button>
+
+      <hr style="width: 100%; border-color: #fff;">
+      <button type="button" class="btn" onclick="showQuote()">Click for a Random Hamilton Quote!</button>
+      <button type="button" class="btn" onclick="cabinetBattle()">Argue Like You're in a Cabinet Battle!</button>
+      <button type="button" class="btn" onclick="enterTheRoom()">Find Out What Happens in The Room Where It Happens!</button>
+      <button type="button" class="btn" onclick="youllBeBack()">Generate a King George Breakup Message!</button>
+      <button type="button" class="btn" onclick="duelCommandment()">Get a Random Duel Commandment and See If You Survive!</button>
+      <hr style="width: 100%; border-color: #fff;">
+      <button type="button" class="btn" onclick="restartPage()">Restart</button>
     </div>
   </section>
 
@@ -80,6 +88,13 @@
   </footer>
 
   <script>
+    function restartDuel() {
+      duelIndex = 0;
+      duelOutcome = "The duel continues...";
+      document.getElementById("user-action").innerText = "Click below to begin the duel!";
+      document.getElementById("opponent-action").innerText = "";
+    }
+
     function restartPage() {
       location.reload();
     }
