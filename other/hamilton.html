@@ -4,140 +4,132 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hamilton Stuff :)</title>
-  <link rel="stylesheet" href="styles.css">
-  <script>
-    let hamiltonQuotes = [
-      "Talk less, smile more.",
-      "I am not throwing away my shot!",
-      "There's a million things I haven't done, but just you wait!",
-      "History has its eyes on you.",
-      "Why do you write like you're running out of time?"
-    ];
-    let hamiltonStatuses = [
-      "I am an inimitable",
-      "I am an original",
-      "I am young, scrappy, and hungry",
-      "I am not throwing away my shot",
-      "I am helpless",
-      "I have been working non-stop",
-      "I am outgunned, outmanned, outnumbered, outplanned"
-    ];
+  
+  <style>
+    /* Hamilton-Themed Styles */
+    body {
+      font-family: 'Times New Roman', serif;
+      margin: 0;
+      background: url('hamilton-texture.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      text-align: center;
+    }
+    h1, h2, h3 { font-weight: bold; font-family: 'Georgia', serif; }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(to right, #b8860b, #8b5a2b);
+      padding: 50px 20px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* Buttons */
+    .btn {
+      background: #ffcc00;
+      color: #000;
+      padding: 12px 24px;
+      margin: 10px;
+      border: 2px solid #b8860b;
+      cursor: pointer;
+      font-weight: bold;
+      font-family: 'Georgia', serif;
+      border-radius: 5px;
+      transition: background 0.3s ease, transform 0.2s;
+      text-align: left;
+    }
+    .btn:hover { background: #ff9900; transform: scale(1.1); }
+    
+    /* Sections */
+    .container { text-align: left; max-width: 800px; margin: auto; }
+    .status-section, .character-profile-section {
+      padding: 40px 20px;
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 10px;
+      margin: 20px;
+      box-shadow: 0px 0px 10px rgba(255, 215, 0, 0.7);
+    }
+    
+    /* Character Profile */
+    #character-profile {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #ffcc00;
+      font-size: 1.2em;
+    }
+    
+    /* Footer */
+    footer { background: #8b5a2b; padding: 20px; margin-top: 20px; }
+  </style>
 
+  <script>
+    // Hamilton Quotes
+    function showQuote() {
+      const quotes = [
+        "Talk less, smile more.",
+        "I am not throwing away my shot!",
+        "There's a million things I haven't done, but just you wait!",
+        "History has its eyes on you.",
+        "Why do you write like you're running out of time?"
+      ];
+      alert(quotes[Math.floor(Math.random() * quotes.length)]);
+    }
+
+    // Duel Feature (Step-by-Step)
     let duelSteps = [
-      "1. The challenge: Demand satisfaction. If they apologize, no need for further action...",
+      "1. The challenge: Demand satisfaction...",
       "2. If they don’t, grab a friend, that’s your second...",
       "3. Have your seconds meet face to face...",
       "4. Time, place, specific location...",
       "5. Most disputes die and no one shoots...",
-      "6. If they don’t reach peace, that’s alright. Time to get some pistols and a doctor on site...",
-      "7. Leave a note for your next of kin, tell 'em where you’ve been...",
-      "8. Your last chance to negotiate, send in your seconds, see if they can set the record straight...",
-      "9. Look him in the eye, aim no higher. Summon all the courage you require, then count...",
-      "10. Ten paces! Fire!",
-      "11. If you survive, you tell the story. If you don’t... well..."
+      "6. If they don’t reach peace, get some pistols and a doctor on site...",
+      "7. Leave a note for your next of kin...",
+      "8. Your last chance to negotiate...",
+      "9. Look him in the eye, aim no higher...",
+      "10. Ten paces! Fire!"
     ];
-
     let duelIndex = 0;
-
-    let isClosing = false;
-
-window.addEventListener("mousemove", (event) => {
-  // Check if the mouse is near the top of the browser window (about to close or navigate away)
-  if (event.clientY < 50 && !isClosing) {
-    isClosing = true;
-    alert("HE AIMS HIS PISTOL AT THE SKY—");
-  }
-});
-
-// Optional: Add event listener for beforeunload to show a message when user attempts to leave
-window.addEventListener("beforeunload", function (event) {
-  const message = "Are you sure you want to leave? History has its eyes on you!";
-  event.returnValue = message; // Modern browsers show a custom message.
-  return message; // Legacy browsers may require this return statement.
-});
-
-function generateCharacterProfile() {
-  const traits = document.querySelectorAll('input[name="trait"]:checked');
-  let profile = '';
-  const characterProfiles = {
-    "Hamilton": "You are determined, ambitious, and ready to change the world. You fight for your beliefs and won't stop until you've achieved your goals. You could definitely be the next Secretary of the Treasury!",
-    "Burr": "You are cautious and strategic, always weighing the pros and cons before taking action. You're not one for taking risks, and you always consider the consequences before making a move.",
-    "Angelica": "You are intelligent, witty, and fiercely loyal to those you care about. You're known for your sharp mind and your ability to take control of any situation. You’re an advocate for women’s rights and equality.",
-    "Eliza": "You are loving, compassionate, and deeply supportive of your loved ones. You're dedicated to your family and believe in the power of perseverance and resilience, even in the face of hardship.",
-    "King George": "You are eccentric and somewhat delusional, with a tendency to focus on controlling the people around you. Despite your grand gestures, you hide your insecurity under a veil of sarcasm and wit."
-  };
-
-  // Logic to determine the character based on traits
-  if (traits.length > 3) {
-    profile = characterProfiles["Hamilton"];
-  } else if (traits.length > 2) {
-    profile = characterProfiles["Angelica"];
-  } else if (traits.length === 2) {
-    profile = characterProfiles["Burr"];
-  } else {
-    profile = characterProfiles["Eliza"];
-  }
-
-  document.getElementById('character-profile').textContent = profile;
-}
-
-    
-    function showQuote() {
-      alert(hamiltonQuotes[Math.floor(Math.random() * hamiltonQuotes.length)]);
-    }
-
-    function cabinetBattle() {
-      const arguments = [
-        "You don’t have the votes!",
-        "What’d I miss?",
-        "Life, liberty, and the pursuit of happiness... We fought for these ideals; we shouldn't settle for less!"
-      ];
-      alert(arguments[Math.floor(Math.random() * arguments.length)]);
-    }
-
-function burnBook() {
-  // Hide the text area and button
-  document.getElementById("burn-text").style.display = "none";
-  document.getElementById("burn-button").style.display = "none";
-  
-  // Display the message
-  const message = document.createElement("p");
-  message.textContent = "You've already sent a letter to Eliza!";
-  message.style.color = "#ffcc00"; // Make the message stand out
-  document.getElementById("burn-section").appendChild(message); // Add the message to the section
-
-  // Show an alert
-  alert("🔥 Your letter has been burned by Eliza! 🔥");
-}
-
-
-    function enterTheRoom() {
-      window.location.href = "https://en.wikipedia.org/wiki/The_Room_Where_It_Happens";
-    }
-
-    function youllBeBack() {
-      const breakupMessages = [
-        "You’ll be back, soon you’ll see...",
-        "You’ll remember you belong to me...",
-        "And when push comes to shove, I will send a fully armed battalion to remind you of my love!"
-      ];
-      alert(breakupMessages[Math.floor(Math.random() * breakupMessages.length)]);
-    }
 
     function duelCommandment() {
       if (duelIndex < duelSteps.length) {
         alert(duelSteps[duelIndex]);
         duelIndex++;
       } else {
-        const survived = Math.random() > 0.5 ? "You survived the duel!" : "You did not survive the duel...";
-        alert(survived);
-        duelIndex = 0; // Reset duel for next round
+        alert(Math.random() > 0.5 ? "You survived the duel!" : "You did not survive the duel...");
+        duelIndex = 0;
       }
     }
 
-    function restart() {
-      window.location.reload();
+    // Write to Eliza Feature
+    function burnBook() {
+      document.getElementById("burn-text").style.display = "none";
+      alert("🔥 Your letter has been burned by Eliza! 🔥");
     }
+
+    // Character Profile Generator
+    function generateCharacterProfile() {
+      const traits = document.querySelectorAll('input[name="trait"]:checked');
+      let profile = "";
+      if (traits.length > 3) { profile = "Alexander Hamilton - You’re ambitious, bold, and always thinking ahead!"; }
+      else if (traits.length > 2) { profile = "Angelica Schuyler - You’re intelligent, witty, and always in control."; }
+      else if (traits.length === 2) { profile = "Aaron Burr - You play it safe, but sometimes hesitate to take your shot."; }
+      else { profile = "Eliza Hamilton - Loyal, compassionate, and focused on the legacy you leave behind."; }
+      document.getElementById('character-profile').textContent = profile;
+    }
+
+    // Stop User From Closing the Tab (Hamilton Style)
+    let isClosing = false;
+    window.addEventListener("mousemove", (event) => {
+      if (event.clientY < 50 && !isClosing) {
+        isClosing = true;
+        alert("HE AIMS HIS PISTOL AT THE SKY—");
+      }
+    });
+
+    window.addEventListener("beforeunload", function (event) {
+      event.returnValue = "Are you sure you want to leave? History has its eyes on you!";
+    });
+
   </script>
 </head>
 <body>
@@ -148,67 +140,37 @@ function burnBook() {
     </div>
   </header>
 
-  <section class="status-section" style="text-align: left;">
+  <section class="status-section">
     <div class="container">
       <h2>You are...</h2>
-      <form>
-        <!-- Status Options -->
-        <label><input type="checkbox" name="status" value="inimitable"> I am an inimitable</label><br>
-        <label><input type="checkbox" name="status" value="original"> I am an original</label><br>
-        <label><input type="checkbox" name="status" value="young-scrappy"> I am young, scrappy, and hungry</label><br>
-        <label><input type="checkbox" name="status" value="waiting"> I am not throwing away my shot</label><br>
-        <label><input type="checkbox" name="status" value="helpless"> I am helpless</label><br>
-        <label><input type="checkbox" name="status" value="work"> I have been working non-stop</label><br>
-        <label><input type="checkbox" name="status" value="outgunned"> I am outgunned, outmanned, outnumbered, outplanned</label><br>
-
-        <hr style="width: 100%; border-color: #fff;">
-        
-        <!-- Letter to Eliza -->
-        <h3>Write Like You’re Running Out of Time:</h3>
-        <textarea id="burn-text" placeholder="Write your legacy..."></textarea>
-        <button type="button" class="btn" onclick="burnBook()">Send to Eliza</button>
-        <hr style="width: 100%; border-color: #fff;">
-        <div id="burn-section"></div>
-<section class="character-profile-section" style="text-align: left;">
-  <div class="container">
-    <h2>Create Your Hamilton Character Profile:</h2>
-    <p>Select your traits and see which *Hamilton* character you are most like!</p>
-    <form id="character-form">
-      <label><input type="checkbox" name="trait" value="ambitious"> Ambitious</label><br>
-      <label><input type="checkbox" name="trait" value="loyal"> Loyal</label><br>
-      <label><input type="checkbox" name="trait" value="strategic"> Strategic</label><br>
-      <label><input type="checkbox" name="trait" value="brave"> Brave</label><br>
-      <label><input type="checkbox" name="trait" value="intelligent"> Intelligent</label><br>
-      <label><input type="checkbox" name="trait" value="sarcastic"> Sarcastic</label><br>
-      <label><input type="checkbox" name="trait" value="romantic"> Romantic</label><br>
-      <button type="button" class="btn" onclick="generateCharacterProfile()">Generate My Character Profile</button>
-    </form>
-    <hr style="width: 100%; border-color: #fff;">
-    <h3>Your Character Profile:</h3>
-    <div id="character-profile" style="color: #ffcc00; font-size: 1.2em;"></div>
-  </div>
-</section>
-
-        
-        <!-- Random Quotes and Actions -->
-        <button type="button" class="btn" onclick="showQuote()">Click for a Random Hamilton Quote!</button>
-        <button type="button" class="btn" onclick="cabinetBattle()">Argue Like You're in a Cabinet Battle!</button>
-        <button type="button" class="btn" onclick="enterTheRoom()">Find Out What Happens in The Room Where It Happens!</button>
-        <button type="button" class="btn" onclick="youllBeBack()">Generate a King George Breakup Message!</button>
-        <button type="button" class="btn" onclick="duelCommandment()">Start the Duel!</button>
-
-        <hr style="width: 100%; border-color: #fff;">
-        
-        <!-- Restart Button -->
-        <button type="button" class="btn" onclick="restart()">Restart</button>
-      </form>
+      <label><input type="checkbox" name="trait" value="ambitious"> I am an inimitable</label><br>
+      <label><input type="checkbox" name="trait" value="loyal"> I am an original</label><br>
+      <label><input type="checkbox" name="trait" value="strategic"> I am young, scrappy, and hungry</label><br>
+      <hr>
+      <h3>Write Like You’re Running Out of Time:</h3>
+      <textarea id="burn-text" placeholder="Write your legacy..."></textarea>
+      <button class="btn" onclick="burnBook()">Send to Eliza</button>
+      <hr>
+      <button class="btn" onclick="showQuote()">Click for a Random Hamilton Quote!</button>
+      <button class="btn" onclick="duelCommandment()">Start the Duel!</button>
     </div>
   </section>
 
-  <footer id="footer" style="text-align: center;">
+  <section class="character-profile-section">
     <div class="container">
-      <p>&copy; 2025 Ahmad Mahrous | Made with 🖥️ and 🎭</p>
+      <h2>Create Your Hamilton Character Profile:</h2>
+      <p>Select your traits:</p>
+      <label><input type="checkbox" name="trait" value="brave"> Brave</label><br>
+      <label><input type="checkbox" name="trait" value="intelligent"> Intelligent</label><br>
+      <label><input type="checkbox" name="trait" value="sarcastic"> Sarcastic</label><br>
+      <button class="btn" onclick="generateCharacterProfile()">Generate Profile</button>
+      <h3>Your Character Profile:</h3>
+      <div id="character-profile"></div>
     </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Ahmad Mahrous | Made with 🖥️ and 🎭</p>
   </footer>
 </body>
 </html>
