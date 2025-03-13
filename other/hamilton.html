@@ -14,8 +14,11 @@
       alert("🔄 The page has been reset! Choose wisely again, History has its eyes on you.");
     }
 
-    // Existing functions remain the same...
+    let shownQuotes = [];
+    let shownArguments = [];
+    let shownCommandments = [];
 
+    // Function to show a random quote
     function showQuote() {
       const quotes = [
         "Talk less, smile more.",
@@ -24,27 +27,47 @@
         "History has its eyes on you.",
         "Why do you write like you're running out of time?"
       ];
-      alert(quotes[Math.floor(Math.random() * quotes.length)]);
+      if (shownQuotes.length === quotes.length) {
+        shownQuotes = [];
+      }
+      let randomQuote;
+      do {
+        randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+      } while (shownQuotes.includes(randomQuote));
+      shownQuotes.push(randomQuote);
+      alert(randomQuote);
     }
 
+    // Function for cabinet battle
     function cabinetBattle() {
       const arguments = [
         "You don’t have the votes!",
         "What’d I miss?",
         "Life, liberty, and the pursuit of happiness... We fought for these ideals; we shouldn't settle for less!"
       ];
-      alert(arguments[Math.floor(Math.random() * arguments.length)]);
+      if (shownArguments.length === arguments.length) {
+        shownArguments = [];
+      }
+      let randomArgument;
+      do {
+        randomArgument = arguments[Math.floor(Math.random() * arguments.length)];
+      } while (shownArguments.includes(randomArgument));
+      shownArguments.push(randomArgument);
+      alert(randomArgument);
     }
 
+    // Function to burn the text
     function burnBook() {
       document.getElementById("burn-text").style.display = "none";
       alert("🔥 Your letter has been burned by Eliza! 🔥");
     }
 
+    // Function to enter the room
     function enterTheRoom() {
       window.location.href = "https://en.wikipedia.org/wiki/The_Room_Where_It_Happens";
     }
 
+    // Function for King George's breakup message
     function youllBeBack() {
       const breakupMessages = [
         "You’ll be back, soon you’ll see...",
@@ -54,6 +77,7 @@
       alert(breakupMessages[Math.floor(Math.random() * breakupMessages.length)]);
     }
 
+    // Function for duel commandment
     function duelCommandment() {
       const commandments = [
         "1. The challenge: Demand satisfaction. If they apologize, no need for further action...",
@@ -68,9 +92,16 @@
         "10. Ten paces! Fire!",
         "11. If you survive, you tell the story. If you don’t... well..."
       ];
-      const result = commandments[Math.floor(Math.random() * commandments.length)];
+      if (shownCommandments.length === commandments.length) {
+        shownCommandments = [];
+      }
+      let randomCommandment;
+      do {
+        randomCommandment = commandments[Math.floor(Math.random() * commandments.length)];
+      } while (shownCommandments.includes(randomCommandment));
+      shownCommandments.push(randomCommandment);
       const survived = Math.random() > 0.5 ? "You survived the duel!" : "You did not survive the duel...";
-      alert(result + '\n' + survived);
+      alert(randomCommandment + '\n' + survived);
     }
   </script>
 </head>
