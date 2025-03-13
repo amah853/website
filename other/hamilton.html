@@ -15,15 +15,59 @@
       color: #fff;
       text-align: center;
     }
-    h1, h2, h3 { font-weight: bold; font-family: 'Georgia', serif; }
-    
+
+    h1, h2, h3 {
+      font-weight: bold;
+      font-family: 'Georgia', serif;
+    }
+
     /* Hero Section */
     .hero {
       background: linear-gradient(to right, #b8860b, #8b5a2b);
       padding: 50px 20px;
       text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     }
-    
+
+    .gradient-text {
+      font-size: 2.5em;
+      background: linear-gradient(90deg, #ffcc00, #ff9900);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientMove 3s infinite;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Sections - Now with Gradient Background */
+    .status-section, .character-profile-section {
+      padding: 40px 20px;
+      background: linear-gradient(to right, rgba(184, 134, 11, 0.9), rgba(139, 90, 43, 0.9));
+      border-radius: 10px;
+      margin: 20px;
+      box-shadow: 0px 0px 10px rgba(255, 215, 0, 0.7);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    input[type="checkbox"], input[type="radio"], select, textarea {
+      margin: 10px 0;
+      background: #222;
+      color: #fff;
+      border: 2px solid #ffcc00;
+      padding: 8px;
+      border-radius: 5px;
+      font-family: 'Georgia', serif;
+    }
+
     /* Buttons */
     .btn {
       background: #ffcc00;
@@ -38,28 +82,19 @@
       transition: background 0.3s ease, transform 0.2s;
       text-align: left;
     }
-    .btn:hover { background: #ff9900; transform: scale(1.1); }
-    
-    /* Sections */
-    .container { text-align: left; max-width: 800px; margin: auto; }
-    .status-section, .character-profile-section {
-      padding: 40px 20px;
-      background: rgba(0, 0, 0, 0.8);
-      border-radius: 10px;
-      margin: 20px;
-      box-shadow: 0px 0px 10px rgba(255, 215, 0, 0.7);
+
+    .btn:hover {
+      background: #ff9900;
+      transform: scale(1.1);
     }
-    
-    /* Character Profile */
-    #character-profile {
-      margin-top: 15px;
-      font-weight: bold;
-      color: #ffcc00;
-      font-size: 1.2em;
-    }
-    
+
     /* Footer */
-    footer { background: #8b5a2b; padding: 20px; margin-top: 20px; }
+    footer {
+      background: #8b5a2b;
+      padding: 20px;
+      margin-top: 20px;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    }
   </style>
 
   <script>
@@ -143,9 +178,11 @@
   <section class="status-section">
     <div class="container">
       <h2>You are...</h2>
-      <label><input type="checkbox" name="trait" value="ambitious"> I am an inimitable</label><br>
-      <label><input type="checkbox" name="trait" value="loyal"> I am an original</label><br>
-      <label><input type="checkbox" name="trait" value="strategic"> I am young, scrappy, and hungry</label><br>
+      <form>
+        <label><input type="checkbox" name="trait" value="ambitious"> I am an inimitable</label><br>
+        <label><input type="checkbox" name="trait" value="loyal"> I am an original</label><br>
+        <label><input type="checkbox" name="trait" value="strategic"> I am young, scrappy, and hungry</label><br>
+      </form>
       <hr>
       <h3>Write Like You’re Running Out of Time:</h3>
       <textarea id="burn-text" placeholder="Write your legacy..."></textarea>
@@ -157,16 +194,10 @@
   </section>
 
   <section class="character-profile-section">
-    <div class="container">
-      <h2>Create Your Hamilton Character Profile:</h2>
-      <p>Select your traits:</p>
-      <label><input type="checkbox" name="trait" value="brave"> Brave</label><br>
-      <label><input type="checkbox" name="trait" value="intelligent"> Intelligent</label><br>
-      <label><input type="checkbox" name="trait" value="sarcastic"> Sarcastic</label><br>
-      <button class="btn" onclick="generateCharacterProfile()">Generate Profile</button>
-      <h3>Your Character Profile:</h3>
-      <div id="character-profile"></div>
-    </div>
+    <h2>Create Your Hamilton Character Profile:</h2>
+    <button class="btn" onclick="generateCharacterProfile()">Generate Profile</button>
+    <h3>Your Character Profile:</h3>
+    <div id="character-profile"></div>
   </section>
 
   <footer>
