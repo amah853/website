@@ -23,6 +23,22 @@
       "I am outgunned, outmanned, outnumbered, outplanned"
     ];
 
+    let duelSteps = [
+      "1. The challenge: Demand satisfaction. If they apologize, no need for further action...",
+      "2. If they don’t, grab a friend, that’s your second...",
+      "3. Have your seconds meet face to face...",
+      "4. Time, place, specific location...",
+      "5. Most disputes die and no one shoots...",
+      "6. If they don’t reach peace, that’s alright. Time to get some pistols and a doctor on site...",
+      "7. Leave a note for your next of kin, tell 'em where you’ve been...",
+      "8. Your last chance to negotiate, send in your seconds, see if they can set the record straight...",
+      "9. Look him in the eye, aim no higher. Summon all the courage you require, then count...",
+      "10. Ten paces! Fire!",
+      "11. If you survive, you tell the story. If you don’t... well..."
+    ];
+
+    let duelIndex = 0;
+
     function showQuote() {
       alert(hamiltonQuotes[Math.floor(Math.random() * hamiltonQuotes.length)]);
     }
@@ -55,22 +71,14 @@
     }
 
     function duelCommandment() {
-      const commandments = [
-        "1. The challenge: Demand satisfaction. If they apologize, no need for further action...",
-        "2. If they don’t, grab a friend, that’s your second...",
-        "3. Have your seconds meet face to face...",
-        "4. Time, place, specific location...",
-        "5. Most disputes die and no one shoots...",
-        "6. If they don’t reach peace, that’s alright. Time to get some pistols and a doctor on site...",
-        "7. Leave a note for your next of kin, tell 'em where you’ve been...",
-        "8. Your last chance to negotiate, send in your seconds, see if they can set the record straight...",
-        "9. Look him in the eye, aim no higher. Summon all the courage you require, then count...",
-        "10. Ten paces! Fire!",
-        "11. If you survive, you tell the story. If you don’t... well..."
-      ];
-      const result = commandments[Math.floor(Math.random() * commandments.length)];
-      const survived = Math.random() > 0.5 ? "You survived the duel!" : "You did not survive the duel...";
-      alert(result + '\n' + survived);
+      if (duelIndex < duelSteps.length) {
+        alert(duelSteps[duelIndex]);
+        duelIndex++;
+      } else {
+        const survived = Math.random() > 0.5 ? "You survived the duel!" : "You did not survive the duel...";
+        alert(survived);
+        duelIndex = 0; // Reset duel for next round
+      }
     }
 
     function restart() {
@@ -112,7 +120,7 @@
         <button type="button" class="btn" onclick="cabinetBattle()">Argue Like You're in a Cabinet Battle!</button>
         <button type="button" class="btn" onclick="enterTheRoom()">Find Out What Happens in The Room Where It Happens!</button>
         <button type="button" class="btn" onclick="youllBeBack()">Generate a King George Breakup Message!</button>
-        <button type="button" class="btn" onclick="duelCommandment()">Get a Random Duel Commandment and See If You Survive!</button>
+        <button type="button" class="btn" onclick="duelCommandment()">Start the Duel!</button>
 
         <hr style="width: 100%; border-color: #fff;">
         
