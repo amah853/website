@@ -131,47 +131,46 @@
 
     let isClosing = false;
 
-window.addEventListener("mousemove", (event) => {
-  // Check if the mouse is near the top of the browser window (about to close or navigate away)
-  if (event.clientY < 50 && !isClosing) {
-    isClosing = true;
-    alert("HE AIMS HIS PISTOL AT THE SKY—");
-  }
-});
+    window.addEventListener("mousemove", (event) => {
+      // Check if the mouse is near the top of the browser window (about to close or navigate away)
+      if (event.clientY < 50 && !isClosing) {
+        isClosing = true;
+        alert("HE AIMS HIS PISTOL AT THE SKY—");
+      }
+    });
 
-// Optional: Add event listener for beforeunload to show a message when user attempts to leave
-window.addEventListener("beforeunload", function (event) {
-  const message = "Are you sure you want to leave? History has its eyes on you!";
-  event.returnValue = message; // Modern browsers show a custom message.
-  return message; // Legacy browsers may require this return statement.
-});
+    // Optional: Add event listener for beforeunload to show a message when user attempts to leave
+    window.addEventListener("beforeunload", function (event) {
+      const message = "Are you sure you want to leave? History has its eyes on you!";
+      event.returnValue = message; // Modern browsers show a custom message.
+      return message; // Legacy browsers may require this return statement.
+    });
 
-function generateCharacterProfile() {
-  const traits = document.querySelectorAll('input[name="trait"]:checked');
-  let profile = '';
-  const characterProfiles = {
-    "Hamilton": "Like Hamilton, you are determined, ambitious, and ready to change the world. You fight for your beliefs and won't stop until you've achieved your goals. You could definitely be the next Secretary of the Treasury!",
-    "Burr": "Like Burr, you are cautious and strategic, always weighing the pros and cons before taking action. You're not one for taking risks, and you always consider the consequences before making a move.",
-    "Angelica": "You're like Angelica: intelligent, witty, and fiercely loyal to those you care about. You're known for your sharp mind and your ability to take control of any situation. You’re an advocate for women’s rights and equality.",
-    "Eliza": "You share personality traits with Eliza, who is loving, compassionate, and deeply supportive of her loved ones. You're dedicated to your family and believe in the power of perseverance and resilience, even in the face of hardship.",
-    "King George": "Like King George III, You are eccentric and somewhat delusional, with a tendency to focus on controlling the people around you. Despite your grand gestures, you hide your insecurity under a veil of sarcasm and wit."
-  };
+    function generateCharacterProfile() {
+      const traits = document.querySelectorAll('input[name="trait"]:checked');
+      let profile = '';
+      const characterProfiles = {
+        "Hamilton": "Like Hamilton, you are determined, ambitious, and ready to change the world. You fight for your beliefs and won't stop until you've achieved your goals. You could definitely be the next Secretary of the Treasury!",
+        "Burr": "Like Burr, you are cautious and strategic, always weighing the pros and cons before taking action. You're not one for taking risks, and you always consider the consequences before making a move.",
+        "Angelica": "You're like Angelica: intelligent, witty, and fiercely loyal to those you care about. You're known for your sharp mind and your ability to take control of any situation. You’re an advocate for women’s rights and equality.",
+        "Eliza": "You share personality traits with Eliza, who is loving, compassionate, and deeply supportive of her loved ones. You're dedicated to your family and believe in the power of perseverance and resilience, even in the face of hardship.",
+        "King George": "Like King George III, You are eccentric and somewhat delusional, with a tendency to focus on controlling the people around you. Despite your grand gestures, you hide your insecurity under a veil of sarcasm and wit."
+      };
 
-  // Logic to determine the character based on traits
-  if (traits.length > 3) {
-    profile = characterProfiles["Hamilton"];
-  } else if (traits.length > 2) {
-    profile = characterProfiles["Angelica"];
-  } else if (traits.length === 2) {
-    profile = characterProfiles["Burr"];
-  } else {
-    profile = characterProfiles["Eliza"];
-  }
+      // Logic to determine the character based on traits
+      if (traits.length > 3) {
+        profile = characterProfiles["Hamilton"];
+      } else if (traits.length > 2) {
+        profile = characterProfiles["Angelica"];
+      } else if (traits.length === 2) {
+        profile = characterProfiles["Burr"];
+      } else {
+        profile = characterProfiles["Eliza"];
+      }
 
-  document.getElementById('character-profile').textContent = profile;
-}
+      document.getElementById('character-profile').textContent = profile;
+    }
 
-    
     function showQuote() {
       alert(hamiltonQuotes[Math.floor(Math.random() * hamiltonQuotes.length)]);
     }
@@ -185,21 +184,20 @@ function generateCharacterProfile() {
       alert(arguments[Math.floor(Math.random() * arguments.length)]);
     }
 
-function burnBook() {
-  // Hide the text area and button
-  document.getElementById("burn-text").style.display = "none";
-  document.getElementById("burn-button").style.display = "none";
-  
-  // Display the message
-  const message = document.createElement("p");
-  message.textContent = "You've already sent a letter to Eliza!";
-  message.style.color = "#ffcc00"; // Make the message stand out
-  document.getElementById("burn-section").appendChild(message); // Add the message to the section
+    function burnBook() {
+      // Hide the text area and button
+      document.getElementById("burn-text").style.display = "none";
+      document.getElementById("burn-button").style.display = "none";
+      
+      // Display the message
+      const message = document.createElement("p");
+      message.textContent = "You've already sent a letter to Eliza!";
+      message.style.color = "#ffcc00"; // Make the message stand out
+      document.getElementById("burn-section").appendChild(message); // Add the message to the section
 
-  // Show an alert
-  alert("🔥 Your letter has been burned by Eliza! 🔥");
-}
-
+      // Show an alert
+      alert("🔥 Your letter has been burned by Eliza! 🔥");
+    }
 
     function enterTheRoom() {
       window.location.href = "https://en.wikipedia.org/wiki/The_Room_Where_It_Happens";
@@ -222,6 +220,49 @@ function burnBook() {
         const survived = Math.random() > 0.5 ? "You survived the duel!" : "You did not survive the duel...";
         alert(survived);
         duelIndex = 0; // Reset duel for next round
+      }
+    }
+
+    // Mini Duel Game: Reaction-based duel
+    function miniDuelGame() {
+      // Get selected duel partner
+      const partnerSelect = document.getElementById("duel-partner");
+      const partner = partnerSelect.value;
+      if (!partner) {
+        alert("Please select a duel partner first!");
+        return;
+      }
+      
+      const duelStatus = document.getElementById("mini-duel-status");
+      const duelSignal = document.getElementById("mini-duel-signal");
+      
+      duelStatus.textContent = `Get ready to duel with ${partner}. Wait for the signal...`;
+      duelSignal.textContent = "";
+      
+      // Set a random delay between 2000ms and 5000ms
+      const delay = Math.floor(Math.random() * 3000) + 2000;
+      let signalTime;
+
+      const signalTimeout = setTimeout(() => {
+        duelSignal.textContent = "SHOOT!";
+        duelSignal.style.color = "red";
+        signalTime = new Date().getTime();
+        window.addEventListener("keydown", reactionHandler);
+      }, delay);
+
+      function reactionHandler(event) {
+        if (event.code === "Space") {
+          const reactionTime = new Date().getTime() - signalTime;
+          window.removeEventListener("keydown", reactionHandler);
+          // Determine outcome based on reaction time threshold
+          if (reactionTime < 300) {
+            duelStatus.textContent = `Quick draw! You defeated ${partner} in ${reactionTime}ms!`;
+          } else {
+            duelStatus.textContent = `Too slow! Your reaction was ${reactionTime}ms. ${partner} wins the duel.`;
+          }
+          duelSignal.textContent = "";
+          clearTimeout(signalTimeout);
+        }
       }
     }
 
@@ -256,37 +297,55 @@ function burnBook() {
         <!-- Letter to Eliza -->
         <h3>Write Like You’re Running Out of Time:</h3>
         <textarea id="burn-text" placeholder="Write your legacy..."></textarea>
-        <button type="button" class="btn" onclick="burnBook()">Send to Eliza</button>
+        <button type="button" id="burn-button" class="btn" onclick="burnBook()">Send to Eliza</button>
         <hr style="width: 100%; border-color: #fff;">
         <div id="burn-section"></div>
-<section class="character-profile-section" style="text-align: left;">
-  <div class="container">
-    <h2>Create Your Hamilton Character Profile:</h2>
-    <p>Select your traits and see which *Hamilton* character you are most like!</p>
-    <form id="character-form">
-      <label><input type="checkbox" name="trait" value="ambitious"> Ambitious</label><br>
-      <label><input type="checkbox" name="trait" value="loyal"> Loyal</label><br>
-      <label><input type="checkbox" name="trait" value="strategic"> Strategic</label><br>
-      <label><input type="checkbox" name="trait" value="brave"> Brave</label><br>
-      <label><input type="checkbox" name="trait" value="intelligent"> Intelligent</label><br>
-      <label><input type="checkbox" name="trait" value="sarcastic"> Sarcastic</label><br>
-      <label><input type="checkbox" name="trait" value="romantic"> Romantic</label><br>
-      <button type="button" class="btn" onclick="generateCharacterProfile()">Generate My Character Profile</button>
-    </form>
-    <hr style="width: 100%; border-color: #fff;">
-    <h3>Your Character Profile:</h3>
-    <div id="character-profile" style="color: #ffcc00; font-size: 1.2em;"></div>
-  </div>
-</section>
-
         
+        <section class="character-profile-section" style="text-align: left;">
+          <div class="container">
+            <h2>Create Your Hamilton Character Profile:</h2>
+            <p>Select your traits and see which *Hamilton* character you are most like!</p>
+            <form id="character-form">
+              <label><input type="checkbox" name="trait" value="ambitious"> Ambitious</label><br>
+              <label><input type="checkbox" name="trait" value="loyal"> Loyal</label><br>
+              <label><input type="checkbox" name="trait" value="strategic"> Strategic</label><br>
+              <label><input type="checkbox" name="trait" value="brave"> Brave</label><br>
+              <label><input type="checkbox" name="trait" value="intelligent"> Intelligent</label><br>
+              <label><input type="checkbox" name="trait" value="sarcastic"> Sarcastic</label><br>
+              <label><input type="checkbox" name="trait" value="romantic"> Romantic</label><br>
+              <button type="button" class="btn" onclick="generateCharacterProfile()">Generate My Character Profile</button>
+            </form>
+            <hr style="width: 100%; border-color: #fff;">
+            <h3>Your Character Profile:</h3>
+            <div id="character-profile" style="color: #ffcc00; font-size: 1.2em;"></div>
+          </div>
+        </section>
+
         <!-- Random Quotes and Actions -->
         <button type="button" class="btn" onclick="showQuote()">Click for a Random Hamilton Quote!</button>
         <button type="button" class="btn" onclick="cabinetBattle()">Argue Like You're in a Cabinet Battle!</button>
         <button type="button" class="btn" onclick="enterTheRoom()">Find Out What Happens in The Room Where It Happens!</button>
         <button type="button" class="btn" onclick="youllBeBack()">Generate a King George Breakup Message!</button>
         <button type="button" class="btn" onclick="duelCommandment()">Start the Duel!</button>
-
+        
+        <!-- Mini Duel Game Section -->
+        <div id="mini-duel-section" style="margin-top: 20px; text-align: left;">
+          <h3>Mini Duel Game</h3>
+          <label for="duel-partner">Select Your Duel Partner:</label>
+          <select id="duel-partner">
+            <option value="">--Choose a Partner--</option>
+            <option value="Burr">Burr</option>
+            <option value="Hamilton">Hamilton</option>
+            <option value="King George">King George</option>
+            <option value="Angelica">Angelica</option>
+            <option value="Eliza">Eliza</option>
+          </select>
+          <br>
+          <button type="button" class="btn" onclick="miniDuelGame()">Start Mini Duel Game</button>
+          <p id="mini-duel-status" style="color: #ffcc00;"></p>
+          <p id="mini-duel-signal" style="font-size: 2em;"></p>
+        </div>
+        
         <hr style="width: 100%; border-color: #fff;">
         
         <!-- Restart Button -->
