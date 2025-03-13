@@ -39,6 +39,23 @@
 
     let duelIndex = 0;
 
+    let isClosing = false;
+
+window.addEventListener("mousemove", (event) => {
+  // Check if the mouse is near the top of the browser window (about to close or navigate away)
+  if (event.clientY < 50 && !isClosing) {
+    isClosing = true;
+    alert("HE AIMS HIS PISTOL AT THE SKY—");
+  }
+});
+
+// Optional: Add event listener for beforeunload to show a message when user attempts to leave
+window.addEventListener("beforeunload", function (event) {
+  const message = "Are you sure you want to leave? History has its eyes on you!";
+  event.returnValue = message; // Modern browsers show a custom message.
+  return message; // Legacy browsers may require this return statement.
+});
+
 function generateCharacterProfile() {
   const traits = document.querySelectorAll('input[name="trait"]:checked');
   let profile = '';
