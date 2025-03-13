@@ -95,10 +95,21 @@ function generateCharacterProfile() {
       alert(arguments[Math.floor(Math.random() * arguments.length)]);
     }
 
-    function burnBook() {
-      document.getElementById("burn-text").style.display = "none";
-      alert("🔥 Your letter has been burned by Eliza! 🔥");
-    }
+function burnBook() {
+  // Hide the text area and button
+  document.getElementById("burn-text").style.display = "none";
+  document.getElementById("burn-button").style.display = "none";
+  
+  // Display the message
+  const message = document.createElement("p");
+  message.textContent = "You've already sent a letter to Eliza!";
+  message.style.color = "#ffcc00"; // Make the message stand out
+  document.getElementById("burn-section").appendChild(message); // Add the message to the section
+
+  // Show an alert
+  alert("🔥 Your letter has been burned by Eliza! 🔥");
+}
+
 
     function enterTheRoom() {
       window.location.href = "https://en.wikipedia.org/wiki/The_Room_Where_It_Happens";
@@ -157,7 +168,7 @@ function generateCharacterProfile() {
         <textarea id="burn-text" placeholder="Write your legacy..."></textarea>
         <button type="button" class="btn" onclick="burnBook()">Send to Eliza</button>
         <hr style="width: 100%; border-color: #fff;">
-
+        <div id="burn-section"></div>
 <section class="character-profile-section" style="text-align: left;">
   <div class="container">
     <h2>Create Your Hamilton Character Profile:</h2>
