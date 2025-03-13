@@ -236,7 +236,7 @@
       const duelStatus = document.getElementById("mini-duel-status");
       const duelSignal = document.getElementById("mini-duel-signal");
       
-      duelStatus.textContent = `Get ready to duel with ${partner}. Wait for the signal...`;
+      duelStatus.textContent = `Get ready to duel with ${partner}. Press space to shoot...`;
       duelSignal.textContent = "";
       
       // Set a random delay between 2000ms and 5000ms
@@ -320,15 +320,8 @@
             <div id="character-profile" style="color: #ffcc00; font-size: 1.2em;"></div>
           </div>
         </section>
-
-        <!-- Random Quotes and Actions -->
-        <button type="button" class="btn" onclick="showQuote()">Click for a Random Hamilton Quote!</button>
-        <button type="button" class="btn" onclick="cabinetBattle()">Argue Like You're in a Cabinet Battle!</button>
-        <button type="button" class="btn" onclick="enterTheRoom()">Find Out What Happens in The Room Where It Happens!</button>
-        <button type="button" class="btn" onclick="youllBeBack()">Generate a King George Breakup Message!</button>
-        <button type="button" class="btn" onclick="duelCommandment()">Start the Duel!</button>
-        
-        <!-- Mini Duel Game Section -->
+<hr>
+                <!-- Mini Duel Game Section -->
         <div id="mini-duel-section" style="margin-top: 20px; text-align: left;">
           <h3>Mini Duel Game</h3>
           <label for="duel-partner">Select Your Duel Partner:</label>
@@ -345,6 +338,12 @@
           <p id="mini-duel-status" style="color: #ffcc00;"></p>
           <p id="mini-duel-signal" style="font-size: 2em;"></p>
         </div>
+        <hr>
+        <!-- Random Quotes and Actions -->
+        <button type="button" class="btn" onclick="showQuote()">Click for a Random Hamilton Quote!</button>
+        <button type="button" class="btn" onclick="cabinetBattle()">Argue Like You're in a Cabinet Battle!</button>
+        <button type="button" class="btn" onclick="enterTheRoom()">Find Out What Happens in The Room Where It Happens!</button>
+        <button type="button" class="btn" onclick="youllBeBack()">Generate a King George Breakup Message!</button>
         
         <hr style="width: 100%; border-color: #fff;">
         
